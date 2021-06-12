@@ -9,6 +9,7 @@
 
 # Ejercicios con funciones y módulos
 import random
+from typing import List
 
 # --------------------------------
 # Aquí dentro definir la función lista_aleatoria
@@ -17,12 +18,7 @@ import random
 # --------------------------------
 
 
-if __name__ == '__main__':
-    print("Bienvenidos a otra clase de Inove con Python")
-    
-    inicio = 0
-    fin = 10
-    cantidad = 5
+
 
     # Alumno: Crear la función "lista_aleatoria"
 
@@ -30,7 +26,7 @@ if __name__ == '__main__':
     # Ejemplo de como obtener un numero aleatorio
     # entre inicio y fin
     # inicio <= numero <= fin
-    numero = random.randrange(inicio, fin+1)
+ 
     # Documentación oficial de random
     # https://docs.python.org/3.7/library/random.html
     # Ante cualquier duda preguntar en el campus!
@@ -61,4 +57,20 @@ if __name__ == '__main__':
 
     # print(mi_lista_aleatoria)
 
+def lista_aleatoria(inicio,fin,cantidad):
+    lista_vacia =[]
+    for i in range(cantidad):
+        numero = random.randrange(inicio, fin+1) 
+        lista_vacia.append(numero)
+        print("Mi lista aleatoria",lista_vacia)
+    return lista_vacia
+    
+
+if __name__ == '__main__':
+    print("Bienvenidos a otra clase de Inove con Python")
+    
+    inicio = 0
+    fin = 10
+    cantidad = 5
+    lista_aleatoria(inicio,fin,cantidad)
     print("terminamos")

@@ -69,14 +69,73 @@ guardados" tenga "generala", es decir, 5 números iguales.
 import random
 
 # --------------------------------
+
+
 # Dentro de esta sección copiar y crear
 # todas las funciones que utilice
+def resultado_tirada (cantidad):
+    resultado_tirada = []
+    for i in range(cantidad):
+      resultado_tirada.append(random.randrange(1, 6+1))
+    
+    
+    return resultado_tirada
 
 
-# --------------------------------
+def repeticion_maxima (tirada):
+    num_mas_rep = max(tirada, key=tirada.count)
+    return num_mas_rep
+
+
 
 if __name__ == '__main__':
     print("¡El juego de la generala!")
     # A partir de aquí escriba el código que
     # invoca al as funciones y resuelve el enunciado
     # Leer el enunciado con atención y consultar cualquier duda
+    
+    cantidad = 5
+    num_max = None
+    tiradas_totales = 0
+
+    while cantidad > 0:
+
+        for i in range(1,4):
+
+            if (num_max is None):
+                tirada = resultado_tirada(cantidad)
+                print("intento N°",i,'resultado de la tirada:', tirada)
+
+                num_max = repeticion_maxima(tirada) 
+                print('el número más repetido de la tirada es "{}"'.format(num_max))
+
+                cantidad_rep = tirada.count(num_max)
+                print('se repite', cantidad_rep, 'veces')
+
+                cantidad = cantidad - cantidad_rep
+                print('quedan {} dados'.format(cantidad))
+
+                            
+
+            else:
+                tirada = resultado_tirada(cantidad)
+                print("Intento N°",i,'resultado de la tirada:', tirada)
+                
+                cantidad_rep = tirada.count(num_max)
+                print(num_max, 'se repite', cantidad_rep, 'veces')
+
+                cantidad = cantidad - cantidad_rep
+                print('quedan {} dados'.format(cantidad))
+
+            tiradas_totales += 1   
+        
+            if tiradas_totales == 3: 
+                cantidad = 5
+                tiradas = [None]
+                num_max = None
+                tiradas_totales = 0
+                print ("Volver a intentar")
+      
+    print('¡Generala!') 
+      
+    print('tiros totales:', tiradas_totales)
