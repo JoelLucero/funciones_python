@@ -73,6 +73,7 @@ import random
 
 # Dentro de esta sección copiar y crear
 # todas las funciones que utilice
+
 def resultado_tirada (cantidad):
     resultado_tirada = []
     for i in range(cantidad):
@@ -93,7 +94,7 @@ if __name__ == '__main__':
     # A partir de aquí escriba el código que
     # invoca al as funciones y resuelve el enunciado
     # Leer el enunciado con atención y consultar cualquier duda
-    
+    contador = 0
     cantidad = 5
     num_max = None
     tiradas_totales = 0
@@ -126,16 +127,20 @@ if __name__ == '__main__':
 
                 cantidad = cantidad - cantidad_rep
                 print('quedan {} dados'.format(cantidad))
+                if cantidad == 0:
+                    break
 
             tiradas_totales += 1   
         
-            if tiradas_totales == 3: 
+            if tiradas_totales == 3: #se reinicia 
                 cantidad = 5
                 tiradas = [None]
                 num_max = None
                 tiradas_totales = 0
                 print ("Volver a intentar")
+        contador += 1 #cantidad de intentos
       
     print('¡Generala!') 
       
-    print('tiros totales:', tiradas_totales)
+    print('tiros totales:', tiradas_totales," ","Intentos totales ", contador)
+
